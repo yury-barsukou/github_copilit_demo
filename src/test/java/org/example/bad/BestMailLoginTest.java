@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,13 +11,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 public class BestMailLoginTest {
 
   public WebDriver driver;
 
-  @Test
+  @Test(groups = "sign_in")
   public void loginTest() {
     //prepare Chrome driver
     System.setProperty("webdriver.chrome.driver", "d:\\Soft\\ChromeDriver\\chromedriver.exe");
@@ -65,7 +65,7 @@ public class BestMailLoginTest {
    }
   }
 
-  @Test
+  @AfterClass (alwaysRun = true)
   public void tearDown() {
     //close browser
     if (driver != null) {
