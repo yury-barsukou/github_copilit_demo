@@ -1,11 +1,11 @@
 package org.example.calculator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.stream.Stream;
 
 public class SimpleCalculatorTest {
 
@@ -33,6 +33,21 @@ public class SimpleCalculatorTest {
     @MethodSource("provideNumbersForDivision")
     public void testDivide(double input1, double input2, double expected) {
         assertEquals(expected, calculator.divide(input1, input2));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideNumbersForPower")
+    public void testPower(double input1, double input2, double expected) {
+        assertEquals(expected, calculator.power(input1, input2));
+    }
+
+    static Stream<Arguments> provideNumbersForPower() {
+        return Stream.of(
+            Arguments.of(2, 3, 8),
+            Arguments.of(-2, 3, -8),
+            Arguments.of(2, 0, 1),
+            Arguments.of(2, -2, 0.25)
+        );
     }
 
     static Stream<Arguments> provideNumbersForAddition() {

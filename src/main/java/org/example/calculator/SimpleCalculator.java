@@ -50,4 +50,15 @@ public class SimpleCalculator {
             throw new IllegalArgumentException("Division by zero is not allowed.");
         }
     }
+
+    /**
+     * Raises the first number to the power of the second number.
+     *
+     * @param num1 The base number.
+     * @param num2 The exponent.
+     * @return The result of num1 raised to the power of num2.
+     */
+    public double power(double num1, double num2) {
+        return Math.pow(num1, num2);
+    }
 }
